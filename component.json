@@ -1,0 +1,248 @@
+{
+    "title": "groupalarm Billing API",
+    "description": "The billing service implements the billing business logic\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "docsUrl": "",
+    "url": "https://app.groupalarm.com/api/v1/billing",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://app.groupalarm.com/api/v1/billing",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_API_Token": {
+                "label": "API-TOKEN (API_Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need an API-Token from the RBAC settings of your GroupAlarm organization. Place the token inside the HTTP-Header `API-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            },
+            "auth_Personal-Access-Token": {
+                "label": "Personal-Access-Token (Personal-Access-Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need a Personal Access Token from your profile settings. Place the token inside the HTTP-Header `Personal-Access-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "UpdateBilling": {
+            "main": "./lib/actions/UpdateBilling.js",
+            "title": "UpdateBilling",
+            "description": "Updates a billing configuration for an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateBilling.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateBilling": {
+            "main": "./lib/actions/CreateBilling.js",
+            "title": "CreateBilling",
+            "description": "Creates a billing configuration for an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateBilling.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActivateContract": {
+            "main": "./lib/actions/ActivateContract.js",
+            "title": "ActivateContract",
+            "description": "Revokes the odp-contract for the organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActivateContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateContract": {
+            "main": "./lib/actions/CreateContract.js",
+            "title": "CreateContract",
+            "description": "Creates an odp-contract for the passed organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetContract": {
+            "main": "./lib/actions/GetContract.js",
+            "title": "GetContract",
+            "description": "Get the current odp-contract of the organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteContract": {
+            "main": "./lib/actions/DeleteContract.js",
+            "title": "DeleteContract",
+            "description": "Revokes the odp-contract for the organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteContract.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetBilling": {
+            "main": "./lib/actions/GetBilling.js",
+            "title": "GetBilling",
+            "description": "Get an organizations billing details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetBilling.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ReactivateOrganization": {
+            "main": "./lib/actions/ReactivateOrganization.js",
+            "title": "ReactivateOrganization",
+            "description": "Reactivates a terminated organization payment option",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ReactivateOrganization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TerminateOrganization": {
+            "main": "./lib/actions/TerminateOrganization.js",
+            "title": "TerminateOrganization",
+            "description": "Terminates an organization payment option due the next billing",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TerminateOrganization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetBillingPreview": {
+            "main": "./lib/actions/GetBillingPreview.js",
+            "title": "GetBillingPreview",
+            "description": "Get a preview of the organization's current billing cycle",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetBillingPreview.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetProBonoRequest": {
+            "main": "./lib/actions/GetProBonoRequest.js",
+            "title": "GetProBonoRequest",
+            "description": "Check the status of an organization's pro-bono request",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetProBonoRequest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AddProBonoRequest": {
+            "main": "./lib/actions/AddProBonoRequest.js",
+            "title": "AddProBonoRequest",
+            "description": "Create a new pro-bono request",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AddProBonoRequest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

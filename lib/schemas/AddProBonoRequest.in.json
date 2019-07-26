@@ -1,0 +1,118 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "ProBonoRequest is used to manage organizations' pro-bono requests",
+            "type": "object",
+            "properties": {
+                "billing_status": {
+                    "type": "boolean",
+                    "x-go-name": "BillingStatus"
+                },
+                "date_request": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "DateRequest"
+                },
+                "decision": {
+                    "description": "ProBonoDecision is our decision on whether the user is granted a discount or not",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-package": "groupalarm.com/go/billing/api/services"
+                },
+                "organization": {
+                    "description": "Organization defines an organization payload",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "ID"
+                        },
+                        "name": {
+                            "type": "string",
+                            "x-go-name": "Name"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/user/api/services"
+                },
+                "reason": {
+                    "description": "ProBonoReason is the user's reason why he beliefs he should be granted a discount",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-package": "groupalarm.com/go/billing/api/services"
+                },
+                "user": {
+                    "description": "User describes an user payload",
+                    "type": "object",
+                    "properties": {
+                        "active": {
+                            "description": "describes, if the email was verified",
+                            "type": "boolean",
+                            "x-go-name": "Active"
+                        },
+                        "availablePreference": {
+                            "description": "defines if a user wants to be available or not",
+                            "type": "boolean",
+                            "x-go-name": "AvailablePreference"
+                        },
+                        "availableStatus": {
+                            "description": "DispatchStatus describes the current status of a user",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-package": "groupalarm.com/go/replication"
+                        },
+                        "avatarURL": {
+                            "description": "URL to the avatar of the user",
+                            "type": "string",
+                            "x-go-name": "AvatarURL"
+                        },
+                        "chatToken": {
+                            "description": "token for intercom chat",
+                            "type": "string",
+                            "x-go-name": "ChatToken"
+                        },
+                        "editable": {
+                            "description": "describes, if the user wants to be edited by an organization administrator",
+                            "type": "boolean",
+                            "x-go-name": "Editable"
+                        },
+                        "email": {
+                            "description": "users email address",
+                            "type": "string",
+                            "x-go-name": "Email"
+                        },
+                        "id": {
+                            "description": "ID for this user",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "ID"
+                        },
+                        "name": {
+                            "description": "name of the user",
+                            "type": "string",
+                            "x-go-name": "Name"
+                        },
+                        "pending": {
+                            "description": "defines an pending invitation (user is known, but hasn't logged in yet)",
+                            "type": "boolean",
+                            "x-go-name": "Pending"
+                        },
+                        "surname": {
+                            "description": "surname of the user",
+                            "type": "string",
+                            "x-go-name": "Surname"
+                        },
+                        "token": {
+                            "description": "current JWT token for this session",
+                            "type": "string",
+                            "x-go-name": "Token"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/user/api/services"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/billing/api/services"
+        }
+    }
+}

@@ -1,0 +1,199 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "BillingRequest is the definition of a billing request payload",
+            "type": "object",
+            "properties": {
+                "billingAddress": {
+                    "description": "BillingAddress is the definition of a billing address",
+                    "type": "object",
+                    "required": [
+                        "organizationID",
+                        "email",
+                        "phone",
+                        "address1",
+                        "city",
+                        "postCode",
+                        "state",
+                        "country"
+                    ],
+                    "properties": {
+                        "address1": {
+                            "description": "address from the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "Address1"
+                        },
+                        "address2": {
+                            "description": "possible second line for the address",
+                            "type": "string",
+                            "x-go-name": "Address2"
+                        },
+                        "city": {
+                            "description": "city from the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "City"
+                        },
+                        "company": {
+                            "description": "name of the company",
+                            "type": "string",
+                            "x-go-name": "Company"
+                        },
+                        "country": {
+                            "description": "country from the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "Country"
+                        },
+                        "email": {
+                            "description": "email of the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "Email"
+                        },
+                        "id": {
+                            "description": "id for this billing address object",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "ID"
+                        },
+                        "internalOrderID": {
+                            "description": "internal order ID",
+                            "type": "string",
+                            "x-go-name": "InternalOrderID"
+                        },
+                        "name": {
+                            "description": "name of the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "Name"
+                        },
+                        "organizationID": {
+                            "description": "connected organization by its ID",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "OrganizationID"
+                        },
+                        "phone": {
+                            "description": "phone of the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "Phone"
+                        },
+                        "postCode": {
+                            "description": "postcode from the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "PostCode"
+                        },
+                        "proBono": {
+                            "description": "possible pro bono status for this organization",
+                            "type": "boolean",
+                            "x-go-name": "ProBono"
+                        },
+                        "state": {
+                            "description": "state from the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "State"
+                        },
+                        "surname": {
+                            "description": "surname of the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "Surname"
+                        },
+                        "vatID": {
+                            "description": "possible VAT of the invoice recipient",
+                            "type": "string",
+                            "x-go-name": "VatID"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/billing/api/services"
+                },
+                "organizationBillingInformation": {
+                    "description": "OrganizationBillingInformation contains information about an organization's billing",
+                    "type": "object",
+                    "properties": {
+                        "active": {
+                            "type": "boolean",
+                            "x-go-name": "Active"
+                        },
+                        "owners": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64"
+                            },
+                            "x-go-name": "Owners"
+                        },
+                        "terminationDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "x-go-name": "TerminationDate"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/billing/api/services"
+                },
+                "organizationName": {
+                    "description": "Name of the organization, only set on creation to set in on the invoice",
+                    "type": "string",
+                    "x-go-name": "OrganizationName"
+                },
+                "paymentOption": {
+                    "description": "PaymentOption is the definition of a payment option",
+                    "type": "object",
+                    "required": [
+                        "organizationID",
+                        "paymentMethod"
+                    ],
+                    "properties": {
+                        "nextPaymentMethod": {
+                            "description": "PaymentMethod is an implemented payment method [SEPA, Invoice or CreditCard]",
+                            "type": "string",
+                            "x-go-package": "groupalarm.com/go/billing/api/services"
+                        },
+                        "optinDate": {
+                            "description": "date of creation",
+                            "type": "string",
+                            "format": "date-time",
+                            "x-go-name": "OptinDate"
+                        },
+                        "organizationID": {
+                            "description": "connected organizationID",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "OrganizationID"
+                        },
+                        "paymentMethod": {
+                            "description": "PaymentMethod is an implemented payment method [SEPA, Invoice or CreditCard]",
+                            "type": "string",
+                            "x-go-package": "groupalarm.com/go/billing/api/services"
+                        },
+                        "paymentMethodCreditCard": {
+                            "description": "PaymentMethodCreditCard contains the Stripe CC token",
+                            "type": "object",
+                            "properties": {
+                                "ccToken": {
+                                    "type": "string",
+                                    "x-go-name": "CreditCardToken"
+                                }
+                            },
+                            "x-go-package": "groupalarm.com/go/billing/api/services"
+                        },
+                        "paymentMethodSEPA": {
+                            "description": "PaymentMethodSEPA contains the SEPA information",
+                            "type": "object",
+                            "properties": {
+                                "bic": {
+                                    "type": "string",
+                                    "x-go-name": "BIC"
+                                },
+                                "iban": {
+                                    "type": "string",
+                                    "x-go-name": "IBAN"
+                                }
+                            },
+                            "x-go-package": "groupalarm.com/go/billing/api/services"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/billing/api/services"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/billing/api/controller"
+        }
+    }
+}

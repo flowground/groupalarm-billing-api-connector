@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "ODPContract describes an odp-contract for an organization",
+            "type": "object",
+            "properties": {
+                "activationDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "ActivationDate"
+                },
+                "activationIP": {
+                    "type": "string",
+                    "x-go-name": "ActivationIP"
+                },
+                "activationUserID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ActivationUserID"
+                },
+                "email": {
+                    "type": "string",
+                    "x-go-name": "Email"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "phone": {
+                    "type": "string",
+                    "x-go-name": "Phone"
+                },
+                "surname": {
+                    "type": "string",
+                    "x-go-name": "Surname"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/billing/api/services"
+        }
+    }
+}
